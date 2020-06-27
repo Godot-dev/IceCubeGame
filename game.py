@@ -1,4 +1,5 @@
 import pygame
+import random
 from player import Player
 from projectile import Projectile
 
@@ -9,5 +10,6 @@ class Game:
         self.pressed = {}
         self.liste_projectiles = pygame.sprite.Group()
 
-    def launch_projectile(self):
-        self.liste_projectiles.add(Projectile())
+    def launch_projectile(self):  # crée un projectile une fois sur 10 afin de diminuer la fréquence
+        if random.randint(1, 30) == 1:
+            self.liste_projectiles.add(Projectile(self))
