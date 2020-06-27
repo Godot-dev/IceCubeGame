@@ -18,6 +18,11 @@ while running:
     for projectile in game.liste_projectiles:
         projectile.move()
 
+    if game.check_collision(game.player, game.liste_projectiles):
+        game.player.health -= 1
+        if game.player.health == 0:
+            running = False
+
     game.liste_projectiles.draw(screen)
 
     if game.pressed.get(pygame.K_RIGHT) and game.player.rect.x + game.player.rect.width < screen.get_width():

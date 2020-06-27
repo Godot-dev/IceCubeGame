@@ -13,3 +13,6 @@ class Game:
     def launch_projectile(self):  # crée un projectile une fois sur 10 afin de diminuer la fréquence
         if random.randint(1, 30) == 1:
             self.liste_projectiles.add(Projectile(self))
+
+    def check_collision(self, sprite, group):
+        return pygame.sprite.spritecollide(sprite, group, True, pygame.sprite.collide_mask)
